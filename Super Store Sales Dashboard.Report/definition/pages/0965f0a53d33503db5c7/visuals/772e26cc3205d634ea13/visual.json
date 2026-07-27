@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "772e26cc3205d634ea13",
+  "position": {
+    "x": 17.668353380340108,
+    "y": 42.132227291580257,
+    "z": 0,
+    "height": 578.97834923268351,
+    "width": 1243.5802571547076,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "superstore"
+                    }
+                  },
+                  "Property": "Customer Segment"
+                }
+              },
+              "queryRef": "superstore.Customer Segment",
+              "nativeQueryRef": "Customer Segment",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "superstore"
+                    }
+                  },
+                  "Property": "Total Profit"
+                }
+              },
+              "queryRef": "superstore.Total Profit",
+              "nativeQueryRef": "Total Profit"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "superstore"
+                  }
+                },
+                "Property": "Total Profit"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
