@@ -1,11 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Report",
+    "type": "SemanticModel",
     "displayName": "Super Store Sales Dashboard"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "12dc0087-d0c2-4f0a-9242-ff6bddace1cc"
+    "logicalId": "b39b4161-be20-43a6-bb15-a2f4203738fc"
   }
 }
