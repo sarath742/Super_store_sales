@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "772e26cc3205d634ea13",
   "position": {
-    "x": 17.668353380340108,
-    "y": 42.132227291580257,
+    "x": 17.441909979986089,
+    "y": 41.860583951966611,
     "z": 0,
-    "height": 578.97834923268351,
-    "width": 1243.5802571547076,
+    "height": 367.4429035783736,
+    "width": 809.30462307135451,
     "tabOrder": 0
   },
   "visual": {
@@ -32,6 +32,9 @@
             }
           ]
         },
+        "Tooltips": {
+          "projections": []
+        },
         "Y": {
           "projections": [
             {
@@ -47,6 +50,44 @@
               },
               "queryRef": "superstore.Total Profit",
               "nativeQueryRef": "Total Profit"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "superstore"
+                        }
+                      },
+                      "Property": "Profit"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(superstore.Profit)",
+              "nativeQueryRef": "Sum of Profit"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "superstore"
+                        }
+                      },
+                      "Property": "Sales"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(superstore.Sales)",
+              "nativeQueryRef": "Sum of Sales"
             }
           ]
         }
