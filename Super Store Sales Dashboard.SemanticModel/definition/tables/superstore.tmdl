@@ -1,0 +1,294 @@
+table superstore
+	lineageTag: ec05a92f-86fc-4d9c-82c7-a1ca111a0c2c
+
+	measure 'Total Sales' = SUM(superstore[Sales])
+		lineageTag: 3ddbf2c6-2ebd-41cc-a9d8-7324fc556220
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Profit' = SUM(superstore[Profit])
+		lineageTag: a31fc7b5-efc8-473f-9314-212e13c53e03
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales YoY %' =
+			
+			VAR CurrentSales = [Total Sales]
+			VAR PriorYearSales = CALCULATE([Total Sales], SAMEPERIODLASTYEAR('superstore'[Order Date]))
+			RETURN DIVIDE(CurrentSales - PriorYearSales, PriorYearSales, 0)
+		formatString: 0
+		lineageTag: 4b895381-9ada-44e2-a252-7bc92b790866
+
+	measure 'Profit YoY %' =
+			
+			VAR CurrentSales = [Total Profit]
+			VAR PriorYearSales = CALCULATE([Total Sales], SAMEPERIODLASTYEAR('superstore'[Order Date]))
+			RETURN DIVIDE(CurrentSales - PriorYearSales, PriorYearSales, 0)
+		formatString: 0
+		lineageTag: 704322c9-1954-4f7b-949d-c22811c00761
+
+	measure 'total orders' = COUNT(superstore[Order ID])
+		formatString: 0
+		lineageTag: 0684b427-cd9b-468a-8c39-3ea6b30669d3
+
+	measure 'orders YoY %' =
+			
+			VAR CurrentSales = [total orders]
+			VAR PriorYearSales = CALCULATE([Total Sales], SAMEPERIODLASTYEAR('superstore'[Order Date]))
+			RETURN DIVIDE(CurrentSales - PriorYearSales, PriorYearSales, 0)
+		formatString: 0
+		lineageTag: 8d53bbde-6918-4bf5-bbe8-cecef8745f19
+
+	measure 'Sales YoY Label' =
+			
+			VAR YoY = [Sales YoY %]
+			RETURN
+			    IF(
+			        YoY = 0,
+			        "Flat vs last year",
+			        IF(YoY > 0, "↑ ", "↓ ") & FORMAT(ABS(YoY), "0.0%") & " vs last year"
+			    )
+		lineageTag: ab0dda93-76d4-4fef-b909-c228c48bab3a
+
+	measure 'Profit YoY Label' =
+			
+			VAR YoY = [Profit YoY %]
+			RETURN
+			    IF(
+			        YoY = 0,
+			        "Flat vs last year",
+			        IF(YoY > 0, "↑ ", "↓ ") & FORMAT(ABS(YoY), "0.0%") & " vs last year"
+			    )
+		lineageTag: ed091f00-dd7c-450c-bd4a-983e1b16776e
+
+	measure 'Order YoY Label' =
+			
+			VAR YoY = [orders YoY %]
+			RETURN
+			    IF(
+			        YoY = 0,
+			        "Flat vs last year",
+			        IF(YoY > 0, "↑ ", "↓ ") & FORMAT(ABS(YoY), "0.0%") & " vs last year"
+			    )
+		lineageTag: 159a1e30-0bfa-40ae-8960-7e61cad30e84
+
+	measure 'YoY Color' =
+			
+			VAR YoY = [Sales YoY %]
+			RETURN
+			    IF(YoY > 0, "#0ca30c", IF(YoY < 0, "#d03b3b", "#898781"))
+		lineageTag: 44aa69fe-3e67-4c13-b457-a45e87f99be2
+
+	measure flat = "Flat vs last Year"
+		lineageTag: 1030d573-87b5-45c4-b166-6c934fea64fd
+
+	measure Sales_total = CALCULATE(SUM(superstore[Sales]))
+		lineageTag: fe764159-dc73-487f-bd84-a4d0311ccc9e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Row ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: e4692832-a1bd-4a6c-87b2-1df2775eed1c
+		summarizeBy: count
+		sourceColumn: Row ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: a4d20436-92b7-4a67-aac3-d1604830cbe0
+		summarizeBy: count
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 958f6062-6b01-4813-a5f7-04bd4f9e4abc
+		summarizeBy: none
+		sourceColumn: Order Date
+
+		variation Variation
+			isDefault
+			relationship: d31df82c-9d76-40bf-b708-5cce8b3f0ffd
+			defaultHierarchy: LocalDateTable_322afd50-cfc0-48fc-a6f4-c4cfb10d86c3.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Order Priority'
+		dataType: string
+		lineageTag: 1be20bc9-cdc0-4379-9e78-db4db7bf6837
+		summarizeBy: none
+		sourceColumn: Order Priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Quantity'
+		dataType: int64
+		formatString: 0
+		lineageTag: ecb8916e-dac1-4f88-8339-6f2b0d3d573c
+		summarizeBy: sum
+		sourceColumn: Order Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales
+		dataType: double
+		lineageTag: aea8978f-2638-4214-9cd9-2255f59b69ae
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Discount
+		dataType: double
+		lineageTag: 7d1a75b6-fd49-4872-b38f-0952475b41fb
+		summarizeBy: sum
+		sourceColumn: Discount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Ship Mode'
+		dataType: string
+		lineageTag: 2629784d-a573-4d8d-925f-980fd116b082
+		summarizeBy: none
+		sourceColumn: Ship Mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Profit
+		dataType: double
+		lineageTag: d6401374-8fb7-4583-8bd7-1133ab0e9857
+		summarizeBy: sum
+		sourceColumn: Profit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Unit Price'
+		dataType: double
+		lineageTag: aabd040a-6641-4ff8-b6a1-01519cd10220
+		summarizeBy: sum
+		sourceColumn: Unit Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Shipping Cost'
+		dataType: double
+		lineageTag: 9b9135d2-ea60-4f88-94c6-8e4ad7109de5
+		summarizeBy: sum
+		sourceColumn: Shipping Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Customer Name'
+		dataType: string
+		lineageTag: 5f64bcf1-8ef4-4c1f-acc7-62e64fe23bf3
+		summarizeBy: none
+		sourceColumn: Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Province
+		dataType: string
+		lineageTag: 866f957a-c213-4d5e-96d6-dd14635dfbd3
+		summarizeBy: none
+		sourceColumn: Province
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 3b500b0d-7f16-40c4-8734-368f5f2e6214
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Segment'
+		dataType: string
+		lineageTag: e7d52213-7002-4768-9e7b-b1330a5fa61f
+		summarizeBy: none
+		sourceColumn: Customer Segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Category'
+		dataType: string
+		lineageTag: 6d132c89-f8e0-40b9-8007-f00a3a7812d4
+		summarizeBy: none
+		sourceColumn: Product Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Sub-Category'
+		dataType: string
+		lineageTag: 683f0e6f-0cd8-4e29-8099-240a7fd2e9da
+		summarizeBy: none
+		sourceColumn: Product Sub-Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Name'
+		dataType: string
+		lineageTag: ed7b7d10-e990-4b21-ab26-d3843bfbbdc8
+		summarizeBy: none
+		sourceColumn: Product Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Container'
+		dataType: string
+		lineageTag: 064328ae-4352-40c9-b365-a682e894a8c0
+		summarizeBy: none
+		sourceColumn: Product Container
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Base Margin'
+		dataType: double
+		lineageTag: c3f6f92e-6c3c-4555-8804-e47cc2693c42
+		summarizeBy: sum
+		sourceColumn: Product Base Margin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Ship Date'
+		dataType: string
+		lineageTag: de73effc-4490-477e-9c51-4e3f683a2176
+		summarizeBy: none
+		sourceColumn: Ship Date
+
+		annotation SummarizationSetBy = Automatic
+
+	partition superstore = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/curran/data/gh-pages/superstoreSales/superstoreSales.csv"),[Delimiter=",", Columns=21, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Row ID", Int64.Type}, {"Order ID", Int64.Type}, {"Order Date", type text}, {"Order Priority", type text}, {"Order Quantity", Int64.Type}, {"Sales", type number}, {"Discount", type number}, {"Ship Mode", type text}, {"Profit", type number}, {"Unit Price", type number}, {"Shipping Cost", type number}, {"Customer Name", type text}, {"Province", type text}, {"Region", type text}, {"Customer Segment", type text}, {"Product Category", type text}, {"Product Sub-Category", type text}, {"Product Name", type text}, {"Product Container", type text}, {"Product Base Margin", type number}, {"Ship Date", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
