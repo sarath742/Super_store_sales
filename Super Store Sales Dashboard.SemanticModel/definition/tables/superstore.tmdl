@@ -112,11 +112,6 @@ table superstore
 		summarizeBy: none
 		sourceColumn: Order Date
 
-		variation Variation
-			isDefault
-			relationship: d31df82c-9d76-40bf-b708-5cce8b3f0ffd
-			defaultHierarchy: LocalDateTable_322afd50-cfc0-48fc-a6f4-c4cfb10d86c3.'Date Hierarchy'
-
 		changedProperty = DataType
 
 		annotation SummarizationSetBy = Automatic

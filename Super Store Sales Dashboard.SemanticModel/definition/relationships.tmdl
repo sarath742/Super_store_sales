@@ -1,5 +1,9 @@
-relationship d31df82c-9d76-40bf-b708-5cce8b3f0ffd
+relationship da792cfb-3989-491b-973b-98f434daac72
 	joinOnDateBehavior: datePartOnly
+	fromColumn: DateTable.Date
+	toColumn: LocalDateTable_50b9a621-744f-4aea-8150-59f0937d44ff.Date
+
+relationship b7f0781a-2e02-0a06-a8a8-ffc057d69b14
 	fromColumn: superstore.'Order Date'
-	toColumn: LocalDateTable_322afd50-cfc0-48fc-a6f4-c4cfb10d86c3.Date
+	toColumn: DateTable.Date
 

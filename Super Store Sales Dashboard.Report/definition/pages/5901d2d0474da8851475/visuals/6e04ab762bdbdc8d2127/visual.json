@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "6e04ab762bdbdc8d2127",
   "position": {
     "x": 22.093085974649046,
@@ -17,24 +17,13 @@
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Column": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "superstore"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "Order Date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
+                    "SourceRef": {
+                      "Entity": "superstore"
                     }
                   },
-                  "Level": "Month"
+                  "Property": "Order Date"
                 }
               },
               "queryRef": "superstore.Order Date.Variation.Date Hierarchy.Month",

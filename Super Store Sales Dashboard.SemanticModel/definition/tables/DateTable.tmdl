@@ -1,0 +1,154 @@
+table DateTable
+	lineageTag: b0d60a6b-41a4-4939-8020-be2ae09c54b1
+
+	measure Sales_total_2 = CALCULATE(SUM(superstore[Sales]))
+		lineageTag: e6535641-e70f-4934-842f-f5fb372b63af
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date
+		formatString: General Date
+		lineageTag: 037b80eb-aede-421e-8065-2bfa8f87b0f2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: da792cfb-3989-491b-973b-98f434daac72
+			defaultHierarchy: LocalDateTable_50b9a621-744f-4aea-8150-59f0937d44ff.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: 681be23d-1a8d-46bd-bdd3-3cea9aa7e3cc
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		formatString: 0
+		lineageTag: 3678d078-5a2c-4047-86ec-297f821224f0
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Month Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		lineageTag: 95be89b6-fbae-4d23-868d-4c10b6bc66d7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Short'
+		lineageTag: c6ee16d4-d7d1-4921-a64a-934c1655d867
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Short]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		lineageTag: aa83cc09-2905-4e89-b288-2a9f08dbbf9f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year-Month
+		lineageTag: d798921f-725a-4992-ae02-fa9e39cefb4b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year-Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Quarter'
+		lineageTag: 52375dc5-6ae9-42b9-a23a-681685a49b49
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Number'
+		formatString: 0
+		lineageTag: 519b9b1b-d70f-4def-8886-f0d702745a4e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Week Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		formatString: 0
+		lineageTag: 2d5be90e-0912-49ae-b7c5-43e816b33800
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Day]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Name'
+		lineageTag: 4fc12ed3-616f-4793-9163-4602e84f0229
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Short'
+		lineageTag: c5db469c-96f1-4793-9226-04583d7414ab
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day Short]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weekday Number'
+		formatString: 0
+		lineageTag: d3b09fb3-3d36-4a43-bcc6-bddf869463f9
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Weekday Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Year'
+		lineageTag: 75200c78-f644-4562-b269-b017bb101d08
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DateTable = calculated
+		mode: import
+		source =
+				
+				ADDCOLUMNS (
+				    CALENDAR ( DATE(2008,1,1), DATE(2012,12,31) ),
+				    "Year", YEAR([Date]),
+				    "Month Number", MONTH([Date]),
+				    "Month Name", FORMAT([Date], "MMMM"),
+				    "Month Short", FORMAT([Date], "MMM"),
+				    "Quarter", "Q" & FORMAT([Date], "Q"),
+				    "Year-Month", FORMAT([Date], "YYYY-MM"),
+				    "Year Quarter", FORMAT([Date], "YYYY") & "-Q" & FORMAT([Date], "Q"),
+				    "Week Number", WEEKNUM([Date], 2),
+				    "Day", DAY([Date]),
+				    "Day Name", FORMAT([Date], "DDDD"),
+				    "Day Short", FORMAT([Date], "DDD"),
+				    "Weekday Number", WEEKDAY([Date], 2),
+				    "Month Year", FORMAT([Date], "MMM YYYY")
+				)
+
+	annotation PBI_Id = e0d61e3e80154add884f7e3a85f1a906
+
