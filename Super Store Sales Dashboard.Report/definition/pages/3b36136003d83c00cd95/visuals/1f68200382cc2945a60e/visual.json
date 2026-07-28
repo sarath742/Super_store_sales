@@ -1,0 +1,90 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "1f68200382cc2945a60e",
+  "position": {
+    "x": 9.7153700189753316,
+    "y": 0,
+    "z": 0,
+    "height": 673.59898798228971,
+    "width": 629.87982289690069,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "superstore"
+                    }
+                  },
+                  "Property": "Order Date"
+                }
+              },
+              "queryRef": "superstore.Order Date",
+              "nativeQueryRef": "Order Date"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "superstore"
+                        }
+                      },
+                      "Property": "Order Quantity"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(superstore.Order Quantity)",
+              "nativeQueryRef": "Sum of Order Quantity"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "superstore"
+                    }
+                  },
+                  "Property": "Order Priority"
+                }
+              },
+              "queryRef": "superstore.Order Priority",
+              "nativeQueryRef": "Order Priority"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "superstore"
+                        }
+                      },
+                      "Property": "Order ID"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(superstore.Order ID)",
+              "nativeQueryRef": "Count of Order ID"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
