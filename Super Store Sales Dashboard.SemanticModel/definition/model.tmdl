@@ -14,8 +14,7 @@ annotation PBI_QueryOrder = ["superstore"]
 annotation PBI_ProTooling = ["DevMode"]
 
 ref table superstore
-ref table DateTableTemplate_6e830adc-15bb-45c1-b7b7-a065bc3ba401
-ref table LocalDateTable_322afd50-cfc0-48fc-a6f4-c4cfb10d86c3
+ref table DateTable
 
 ref cultureInfo en-US
 
