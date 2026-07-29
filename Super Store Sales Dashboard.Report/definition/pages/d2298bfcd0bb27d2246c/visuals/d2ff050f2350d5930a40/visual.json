@@ -1,19 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "7f70dcd0204e364db127",
+  "name": "d2ff050f2350d5930a40",
   "position": {
-    "x": 10.465145987991653,
+    "x": 381.39643156236247,
     "y": 223.25644774382192,
-    "z": 0,
+    "z": 2,
     "height": 484.88509744361329,
     "width": 370.9312855743708,
-    "tabOrder": 0
+    "tabOrder": 2
   },
   "visual": {
-    "visualType": "barChart",
+    "visualType": "tableEx",
     "query": {
       "queryState": {
-        "Category": {
+        "Values": {
           "projections": [
             {
               "field": {
@@ -27,13 +27,8 @@
                 }
               },
               "queryRef": "DateTable.Year Month",
-              "nativeQueryRef": "Year Month",
-              "active": true
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
+              "nativeQueryRef": "Year Month"
+            },
             {
               "field": {
                 "Aggregation": {
