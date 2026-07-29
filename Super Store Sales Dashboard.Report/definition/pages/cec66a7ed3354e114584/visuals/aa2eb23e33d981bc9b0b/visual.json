@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "cb6b9f099b660e186945",
+  "name": "aa2eb23e33d981bc9b0b",
   "position": {
-    "x": 9.7153700189753316,
-    "y": 0,
-    "z": 0,
-    "height": 602.35294117647061,
-    "width": 966.67931688804561,
-    "tabOrder": 0
+    "x": 11.627939986657392,
+    "y": 273.25658968644871,
+    "z": 1,
+    "height": 367.4429035783736,
+    "width": 487.21068544094476,
+    "tabOrder": 1
   },
   "visual": {
-    "visualType": "pieChart",
+    "visualType": "columnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -23,11 +23,11 @@
                       "Entity": "superstore"
                     }
                   },
-                  "Property": "Region"
+                  "Property": "Product Name"
                 }
               },
-              "queryRef": "superstore.Region",
-              "nativeQueryRef": "Region",
+              "queryRef": "superstore.Product Name",
+              "nativeQueryRef": "Product Name",
               "active": true
             }
           ]
@@ -44,14 +44,14 @@
                           "Entity": "superstore"
                         }
                       },
-                      "Property": "Profit"
+                      "Property": "Sales"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(superstore.Profit)",
-              "nativeQueryRef": "Sum of Profit"
+              "queryRef": "Sum(superstore.Sales)",
+              "nativeQueryRef": "Sum of Sales"
             }
           ]
         }
@@ -68,7 +68,7 @@
                         "Entity": "superstore"
                       }
                     },
-                    "Property": "Profit"
+                    "Property": "Sales"
                   }
                 },
                 "Function": 0
