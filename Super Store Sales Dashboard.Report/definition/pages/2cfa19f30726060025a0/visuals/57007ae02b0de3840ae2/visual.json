@@ -1,39 +1,34 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "f8b7a82d11c07694aa67",
+  "name": "57007ae02b0de3840ae2",
   "position": {
-    "x": 772.09521511405092,
-    "y": 223.25644774382192,
-    "z": 3,
-    "height": 484.88509744361329,
-    "width": 370.9312855743708,
-    "tabOrder": 3
+    "x": 147.67483783054888,
+    "y": 281.3961476771089,
+    "z": 0,
+    "height": 438.37333749698371,
+    "width": 1132.56135470043,
+    "tabOrder": 0
   },
   "visual": {
-    "visualType": "pieChart",
+    "visualType": "tableEx",
     "query": {
       "queryState": {
-        "Category": {
+        "Values": {
           "projections": [
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DateTable"
+                      "Entity": "superstore"
                     }
                   },
-                  "Property": "Year Month"
+                  "Property": "Region"
                 }
               },
-              "queryRef": "DateTable.Year Month",
-              "nativeQueryRef": "Year Month",
-              "active": true
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
+              "queryRef": "superstore.Region",
+              "nativeQueryRef": "Region"
+            },
             {
               "field": {
                 "Aggregation": {
@@ -44,14 +39,14 @@
                           "Entity": "superstore"
                         }
                       },
-                      "Property": "Sales"
+                      "Property": "Profit"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(superstore.Sales)",
-              "nativeQueryRef": "Sum of Sales"
+              "queryRef": "Sum(superstore.Profit)",
+              "nativeQueryRef": "Sum of Profit"
             }
           ]
         }
@@ -68,7 +63,7 @@
                         "Entity": "superstore"
                       }
                     },
-                    "Property": "Sales"
+                    "Property": "Profit"
                   }
                 },
                 "Function": 0

@@ -1,38 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "7f70dcd0204e364db127",
+  "name": "567ccdc59647b937b044",
   "position": {
-    "x": 10.465145987991653,
-    "y": 223.25644774382192,
-    "z": 0,
-    "height": 484.88509744361329,
-    "width": 370.9312855743708,
-    "tabOrder": 0
+    "x": 384.88481355835967,
+    "y": 0,
+    "z": 1,
+    "height": 150.00042582788035,
+    "width": 895.35137897261927,
+    "tabOrder": 1
   },
   "visual": {
-    "visualType": "barChart",
+    "visualType": "cardVisual",
     "query": {
       "queryState": {
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "DateTable"
-                    }
-                  },
-                  "Property": "Year Month"
-                }
-              },
-              "queryRef": "DateTable.Year Month",
-              "nativeQueryRef": "Year Month",
-              "active": true
-            }
-          ]
-        },
-        "Y": {
+        "Data": {
           "projections": [
             {
               "field": {
@@ -44,14 +25,14 @@
                           "Entity": "superstore"
                         }
                       },
-                      "Property": "Sales"
+                      "Property": "Profit"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(superstore.Sales)",
-              "nativeQueryRef": "Sum of Sales"
+              "queryRef": "Sum(superstore.Profit)",
+              "nativeQueryRef": "Sum of Profit"
             }
           ]
         }
@@ -68,7 +49,7 @@
                         "Entity": "superstore"
                       }
                     },
-                    "Property": "Sales"
+                    "Property": "Profit"
                   }
                 },
                 "Function": 0
