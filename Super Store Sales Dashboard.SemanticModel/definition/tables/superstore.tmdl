@@ -87,6 +87,11 @@ table superstore
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure Total_sales_21 = CALCULATE(SUM(superstore[Sales]))
+		lineageTag: f90ab4c5-7030-43f1-92ae-97378d1c5e96
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column 'Row ID'
 		dataType: int64
 		formatString: 0
@@ -111,11 +116,6 @@ table superstore
 		lineageTag: 958f6062-6b01-4813-a5f7-04bd4f9e4abc
 		summarizeBy: none
 		sourceColumn: Order Date
-
-		variation Variation
-			isDefault
-			relationship: d31df82c-9d76-40bf-b708-5cce8b3f0ffd
-			defaultHierarchy: LocalDateTable_322afd50-cfc0-48fc-a6f4-c4cfb10d86c3.'Date Hierarchy'
 
 		changedProperty = DataType
 
