@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "7f70dcd0204e364db127",
+  "position": {
+    "x": 10.465145987991653,
+    "y": 186.04703978651827,
+    "z": 0,
+    "height": 522.09450540091689,
+    "width": 1187.2126726377198,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DateTable"
+                    }
+                  },
+                  "Property": "Year Month"
+                }
+              },
+              "queryRef": "DateTable.Year Month",
+              "nativeQueryRef": "Year Month",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "superstore"
+                        }
+                      },
+                      "Property": "Sales"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(superstore.Sales)",
+              "nativeQueryRef": "Sum of Sales"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "superstore"
+                      }
+                    },
+                    "Property": "Sales"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
