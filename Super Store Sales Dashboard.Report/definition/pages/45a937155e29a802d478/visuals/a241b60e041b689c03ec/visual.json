@@ -1,0 +1,104 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "a241b60e041b689c03ec",
+  "position": {
+    "x": 10.465145987991653,
+    "y": 289.53570566776909,
+    "z": 1,
+    "height": 402.32672353834579,
+    "width": 1252.3291365630012,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "superstore"
+                    }
+                  },
+                  "Property": "Total_sales_21"
+                }
+              },
+              "queryRef": "superstore.Total_sales_21",
+              "nativeQueryRef": "Total_sales_21"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "superstore"
+                    }
+                  },
+                  "Property": "Region"
+                }
+              },
+              "queryRef": "superstore.Region",
+              "nativeQueryRef": "Region"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "superstore"
+                    }
+                  },
+                  "Property": "Province"
+                }
+              },
+              "queryRef": "superstore.Province",
+              "nativeQueryRef": "Province"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "superstore"
+                        }
+                      },
+                      "Property": "Row ID"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(superstore.Row ID)",
+              "nativeQueryRef": "Count of Row ID"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "superstore"
+                        }
+                      },
+                      "Property": "Shipping Cost"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(superstore.Shipping Cost)",
+              "nativeQueryRef": "Sum of Shipping Cost"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
