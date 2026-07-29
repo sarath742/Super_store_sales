@@ -1,18 +1,37 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "27f91703c542c21cdbd0",
+  "name": "f8b7a82d11c07694aa67",
   "position": {
-    "x": 9.7153700189753316,
-    "y": 0,
-    "z": 0,
-    "height": 280.12650221378874,
-    "width": 1271.0942441492728,
-    "tabOrder": 0
+    "x": 772.09521511405092,
+    "y": 223.25644774382192,
+    "z": 3,
+    "height": 484.88509744361329,
+    "width": 370.9312855743708,
+    "tabOrder": 3
   },
   "visual": {
-    "visualType": "barChart",
+    "visualType": "pieChart",
     "query": {
       "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DateTable"
+                    }
+                  },
+                  "Property": "Year Month"
+                }
+              },
+              "queryRef": "DateTable.Year Month",
+              "nativeQueryRef": "Year Month",
+              "active": true
+            }
+          ]
+        },
         "Y": {
           "projections": [
             {
@@ -25,33 +44,14 @@
                           "Entity": "superstore"
                         }
                       },
-                      "Property": "Order ID"
-                    }
-                  },
-                  "Function": 5
-                }
-              },
-              "queryRef": "CountNonNull(superstore.Order ID)",
-              "nativeQueryRef": "Count of Order ID"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "superstore"
-                        }
-                      },
-                      "Property": "Discount"
+                      "Property": "Sales"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(superstore.Discount)",
-              "nativeQueryRef": "Sum of Discount"
+              "queryRef": "Sum(superstore.Sales)",
+              "nativeQueryRef": "Sum of Sales"
             }
           ]
         }
@@ -68,10 +68,10 @@
                         "Entity": "superstore"
                       }
                     },
-                    "Property": "Order ID"
+                    "Property": "Sales"
                   }
                 },
-                "Function": 5
+                "Function": 0
               }
             },
             "direction": "Descending"
