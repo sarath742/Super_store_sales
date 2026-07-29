@@ -1,48 +1,4 @@
 {
   "version": "1.1.0",
-  "diagrams": [
-    {
-      "ordinal": 0,
-      "scrollPosition": {
-        "x": 0,
-        "y": 0
-      },
-      "nodes": [
-        {
-          "location": {
-            "x": 0,
-            "y": 0
-          },
-          "nodeIndex": "superstore",
-          "nodeLineageTag": "ec05a92f-86fc-4d9c-82c7-a1ca111a0c2c",
-          "size": {
-            "height": 300,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 597,
-            "y": 128
-          },
-          "nodeIndex": "DateTable",
-          "nodeLineageTag": "16e27169-702f-4c08-987a-eec2db7854a9",
-          "size": {
-            "height": 200,
-            "width": 234
-          },
-          "zIndex": 0
-        }
-      ],
-      "name": "All tables",
-      "zoomValue": 100,
-      "pinKeyFieldsToTop": false,
-      "showExtraHeaderInfo": false,
-      "hideKeyFieldsWhenCollapsed": false,
-      "tablesLocked": false
-    }
-  ],
-  "selectedDiagram": "All tables",
-  "defaultDiagram": "All tables"
+  "diagrams": []
 }
